@@ -11,44 +11,45 @@ namespace HelloDungeon
             //Start Screen
             string start = "Welcome To The Grungen";
            Console.WriteLine(start);
-            
-            
-            
-            
-            //Health Exercise
-
-            //Health Default
-            int healthRegen = 10;
-            int health = 100;
-            
-            //Name Exercise 
+           
+            //Name Exercise
             string name = "Empty";
             Console.WriteLine("Please enter your name.");
             name = Console.ReadLine();
             Console.WriteLine("Hello " + name);
-            //Displaying Health
-            Console.WriteLine($"Your Hp: {health}");
 
-            //Variables  
-            int monsterAttack1 = -10;
-           
-
-           
-            //Second chariter 
-            string charater = "Willy" ;
-            Console.WriteLine("How did you end up down here " + name);
-            charater = Console.ReadLine();
-            Console.WriteLine("Well " + name);
-            Console.WriteLine("This is the Grungen the place fools come to die. Im Willy the last fool to come here and im apparently not the last");
+            //varibles
+            int health = 100;
+            string characterClass;
+            int power; 
+            //Dammige Attacks
 
             
-            //Monster Apears 
-            Console.WriteLine("A Monster Apears, He attacks and hits you in your chest with his tentical and pushes Willy deeper into the Grungen ");
-            Console.WriteLine("You take 10 dammige");
-            health += monsterAttack1;
-            Console.WriteLine($"Your Hp: {health}");
 
-           //test
+            Console.WriteLine("Select a Class");
+            Console.WriteLine("1.Knight");
+            Console.WriteLine("2.Wizard");
+
+            string input = Console.ReadLine();
+            if (input == "1" || input == "Knight")
+            {
+                characterClass = "Knight";
+                health = 100;
+                power = 10;
+            }
+            //Display stats
+            Console.WriteLine("Your Characters Stats/n");
+            Console.WriteLine("name" + name);
+            Console.WriteLine("class" + characterClass);
+            Console.WriteLine("health" + health);
+            Console.WriteLine("power"
+               
+            
+           
+            
+
+
+           
 
             
             
