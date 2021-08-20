@@ -18,12 +18,26 @@ namespace HelloDungeon
             name = Console.ReadLine();
             Console.WriteLine("Hello " + name);
 
-            //varibles
-            int health = 100;
+            //varibles                      
+            int currentArea = 1;
             string characterClass = "";
-            int power = 0;
-            //Dammige Attacks
+            int health = 100;           
+            float power = 0;
+            bool gameOver = false;
 
+
+            //Fuction for Stats To display
+            void DisplayStats()
+            {
+                Console.WriteLine(name + "stats:");
+                Console.WriteLine("Class:" + characterClass);
+                Console.WriteLine("Power" + power);
+            }
+            
+            int GetInput(string description, string option1, string option2)
+            {
+
+            }
             string input = "";
             bool validInputReceived = false;
 
@@ -34,8 +48,8 @@ namespace HelloDungeon
                 Console.WriteLine("Select a Class");
                 Console.WriteLine("1.Knight");
                 Console.WriteLine("2.Wizard");
-
-               input = Console.ReadLine();
+                input = Console.ReadLine();
+                
                 //If class pick is knight            
                 if (input == "1" || input == "Knight")
                 {
@@ -47,7 +61,7 @@ namespace HelloDungeon
 
                 //If class pick is Wizard
                 else if (input == "2" || input == "Wizard")
-               {
+                {
                     characterClass = "Wizard";
                     health = 75;
                     power = 15;
@@ -55,9 +69,9 @@ namespace HelloDungeon
                 }
                 //If neither are true
                else
-                {
+               {
                     Console.WriteLine("Invalid Input"); 
-                }
+               }
                 
                 Console.ReadKey();
                 Console.Clear();
@@ -89,29 +103,43 @@ namespace HelloDungeon
                     break;
                 }
                 Console.WriteLine("Incorrect! The monkey laughs at you! It hurts...." + "\n you take 5 points of damage.");
-                health -= 5;
-                Console.WriteLine($"Your Hp: {health}");
+                health -= 5;                
+            }
+            Console.WriteLine($"Your Hp: {health}");
+
+            //First Choice
+            validInputReceived = false;
+            while (validInputReceived == false)
+            {                                   
+                Console.WriteLine("You approach a cave. " + "\nDo you go into the cave? " + "\n1.Yes \n2.No");
+                input = Console.ReadLine();
+
+                if (input == "1" || input == "Yes")
+                {
+                    validInputReceived = true;
+                    Console.WriteLine("You enter the cave. Wow you are brave.");
+                    
+                }
+
+                else if (input == "2" || input == "No")
+                {
+                    validInputReceived = true;
+                    Console.WriteLine("You try turning around and going to leave, but you trip and fall in anyway. Nice try.");
+                    
+                }
+
+                else
+                {
+                    Console.WriteLine("Invalid Choice");
+                }
+             }
+
+            //Second Encounter
+            {
+                Console.WriteLine("Now that you are in the cave you hear the sound of rocks gringing . You look where you just entered from to see the faint light disapear.");
+                Console.WriteLine("Your stuck in the cave with only one way to go, so you go deeper into the cave. ");
 
             }
-            
-            //First Choice            
-            Console.WriteLine("You approach a cave. " + "\nDo you go into the cave? " + "\n1.Yes \n2.No");
-            input = Console.ReadLine();
-            if (input == "1" || input == "Yes")
-            {
-                Console.WriteLine("You enter the cave. Wow you are brave.");
-            }
-
-            else if (input == "2" || input == "No")
-            {
-                Console.WriteLine("You try turning around and going to leave, but you trip and fall in anyway. Nice try.");
-
-            }
-            else
-            {
-                Console.WriteLine("Invalid Choice");
-            }
-            
 
 
 
