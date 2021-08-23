@@ -133,15 +133,18 @@ namespace HelloDungeon
                 else
                 {
                     Console.WriteLine("Invalid Choice");
+                    Console.ReadKey();
                 }
-
+                Console.ReadKey();
+                Console.Clear();
+            }
 
 
 
                 //Number of attempts a Loop
                 int numberOfAttempts = 4;
 
-                Console.WriteLine("A very old man with a monkey on his back approches you." + "\n The monkey offers you imortality if you can solve a riddle in " + numberOfAttempts);
+                Console.WriteLine("A very old man with a monkey on his back approches you." + "\n The monkey offers you imortality if you can solve a riddle in " + numberOfAttempts + "Trys");
                 Console.ReadKey();
 
                 for (int i = 0; i < numberOfAttempts; i++)
@@ -160,6 +163,8 @@ namespace HelloDungeon
                     }
                     Console.WriteLine("Incorrect! The monkey laughs at you! It hurts...." + "\n you take 5 points of damage.");
                     health -= 5;
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 Console.WriteLine($"Your Hp: {health}");
 
@@ -180,7 +185,7 @@ namespace HelloDungeon
                     else if (input == "2" || input == "no")
                     {
                         validInputReceived = true;
-                        Console.WriteLine("You try turning around and going to leave, but you trip and fall in anyway. Nice try.");
+                        Console.WriteLine("You try turning around and going to leave, but you trip and fall in anyway. Nice try Loser.");
 
                     }
 
@@ -188,14 +193,35 @@ namespace HelloDungeon
                     {
                         Console.WriteLine("Invalid Choice");
                     }
+                    Console.ReadKey();
+                    Console.Clear();
                 }
 
-                //Second Encounter
+            //Second Encounter
+            {
+                validInputReceived = false;
+                while (validInputReceived == false)
+                Console.WriteLine("While in the cave you hear the sound of rocks grinding . You look where you just entered from to see the faint light disapear.");
+                Console.WriteLine("Your stuck in the cave with only one way to go, so you go deeper into the cave. ");
+                Console.WriteLine("As you go deeper you see a faint light that quickly disapears." + "\n Befor you stands a 12 foot Goblin Daddy ;)");
+                Console.ReadKey();
+                
+                //Choice to attack or talk
+                Input = GetInput("What Will you do?", "Try Talking to him", "Attack him");
+                if (Input == 1)
                 {
-                    Console.WriteLine("While in the cave you hear the sound of rocks gringing . You look where you just entered from to see the faint light disapear.");
-                    Console.WriteLine("Your stuck in the cave with only one way to go, so you go deeper into the cave. ");
+                    Console.WriteLine("You Say whats up." + "Amazingly he understands english" + "\n He ask what your doing in his cave.");
+                    Console.ReadKey();
+                    Console.WriteLine("You say you just wandereed in an would like to leave." + "He understands and moves reveling the exit");
+                    Console.ReadKey();
+                    Console.WriteLine("You Escaped Congrates" + "Would you like to play Again" + "\n yes" + "\n no");
+                    if (input == "yes")
+                    {
+                        
+                    }
 
                 }
+                
 
 
 
@@ -212,3 +238,4 @@ namespace HelloDungeon
         }
     }
 }
+
