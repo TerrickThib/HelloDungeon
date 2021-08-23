@@ -212,7 +212,7 @@ namespace HelloDungeon
                     Console.WriteLine();
                     Console.WriteLine("As you go deeper you see a faint light that quickly disapears." + "\n Befor you stands a 12 foot Goblin Daddy ;)");
                     Console.ReadKey();
-
+                    //Loop for the Goblin encounter
                     validInputReceived = false;
                     while (validInputReceived == false)
                     {
@@ -224,54 +224,64 @@ namespace HelloDungeon
                             Console.ReadKey();
                             Console.WriteLine("You say you just wandereed in an would like to leave. " + "He understands and moves reveling the exit");
                             Console.ReadKey();
-                            Console.WriteLine("You Escaped Congrates " + "Would you like to play Again? " + "\n 1.yes" + "\n 2.no");
-                            input = Console.ReadLine();
-                            if (input == "yes" || input == "1")
+                            //So the play again screen loops if invalid answer
+                            validInputReceived = false;
+                            while (validInputReceived == false)
                             {
-                                //Restart Game
-                                gameOver = true;
-                                validInputReceived = true;
+                                Console.WriteLine("You Escaped Congrates!! " + "Would you like to play Again? " + "\n 1.yes" + "\n 2.no");
+                                input = Console.ReadLine();
+                                if (input == "yes" || input == "1")
+                                {
+                                    //Restart Game
+                                    gameOver = true;
+                                    validInputReceived = true;
 
-                            }
-                            else if (input == "no" || input == "2")
-                            {
-                                //EndGame
-                                gameOver = false;
-                                validInputReceived = true;
-                            }
-                            else
-                            {
-                                //Players input is invalid
-                                Console.WriteLine("Invalid Choice");
-                                Console.ReadKey();
+                                }
+                                else if (input == "no" || input == "2")
+                                {
+                                    //EndGame
+                                    gameOver = false;
+                                    validInputReceived = true;
+                                }
+                                else
+                                {
+                                    //Players input is invalid
+                                    Console.WriteLine("Invalid Choice");
+                                    Console.ReadKey();
+                                    validInputReceived = false;
+                                }
                             }
                         }
 
                         //You try attacking
                         else if (Input == 2)
                         {
-                            Console.WriteLine("You attack him for" + (power -= monsterHealth1) + "\n You hit the Goblin he then swings and hits you" + (health -= monsterAttack));
+                            Console.WriteLine("You attack him" + (power -= monsterHealth1) + "\n You hit the Goblin he then swings and hits you" + (health -= monsterAttack));
                             Console.WriteLine($"Your Hp: {health}");
-                            Console.WriteLine("You died " + "Would you like to play Again" + "\n 1.yes" + "\n 2.no");
-                            Console.ReadKey();
-                            input = Console.ReadLine();
-                            if (input == "yes" || input == "1")
+                            validInputReceived = false;
+                            while (validInputReceived == false)
                             {
-                                //Restart games
-                                gameOver = true;
-                                validInputReceived = true;
-                            }
-                            else if (input == "no" || input == "2")
-                            {
-                                //EndGAme
-                                gameOver = false;
-                                validInputReceived = true;
-                            }
-                            else
-                            {
-                                //Players Input is invalid
-                                Console.WriteLine("Invalid Choice");
-                                Console.ReadKey();
+                                Console.WriteLine("You died!! " + "Would you like to play Again" + "\n 1.yes" + "\n 2.no");
+                                input = Console.ReadLine();
+                                if (input == "yes" || input == "1")
+                                {
+                                    //Restart games
+                                    gameOver = true;
+                                    validInputReceived = true;
+                                }
+                                else if (input == "no" || input == "2")
+                                {
+                                    //EndGAme
+                                    gameOver = false;
+                                    validInputReceived = true;
+                                }
+                                else
+                                {
+                                    //Players Input is invalid
+                                    Console.WriteLine("Invalid Choice");
+                                    Console.ReadKey();
+                                    validInputReceived = false;
+                                }
                             }
                         }
                         //If answer is invalid
@@ -279,8 +289,12 @@ namespace HelloDungeon
                         {
                             Console.WriteLine("Invalid Choice");
                             Console.ReadKey();
+                            validInputReceived = false;
                         }
+                        Console.ReadKey();
+                        Console.Clear();
                     }
+
 
 
 
