@@ -12,10 +12,12 @@ namespace HelloDungeon
         string characterClass = "";
         int health = 100;
         float power = 0;
-        bool gameOver = false;
-        int poison = -5;
+        bool gameOver = true;
+        int poison = 5;
         string input;
         bool validInputReceived = false;
+        int monsterHealth1 = 20;
+        int monsterAttack = 100;
 
         //Fuction for Stats To display
         void DisplayStats()
@@ -72,79 +74,84 @@ namespace HelloDungeon
             return inputReceived;
         }
 
+
         public void Run()
         {
-            //Start Screen
-            string start = "Welcome To The Grungen";
-            Console.WriteLine(start);
-
-            //Name Exercise
-
-            Console.WriteLine("Please enter your name.");
-            name = Console.ReadLine();
-            Console.WriteLine("Hello " + name);
-
-            Console.ReadKey();
-            Console.Clear();
-
-            //Calling Class Selection
-           int Input = GetInput("Select a Class", "Knight", "Wizard");
-
-            //If class pick is knight            
-            if (Input == 1)
+            
+            while (gameOver == true)
             {
-                characterClass = "Knight";
-                health = 100;
-                power = 10;
-                validInputReceived = true;
-            }
+                //Start Screen
+                string start = "Welcome To The Grungen";
+                Console.WriteLine(start);
 
-            //If class pick is Wizard
-            else if (Input == 2)
-            {
-                characterClass = "Wizard";
-                health = 75;
-                power = 15;
-                validInputReceived = true;
-            }
-            DisplayStats();
+                //Name Exercise
 
-            //Man offers you a potion
-            validInputReceived = false;
-            while (validInputReceived == false)
-            {
-                Console.WriteLine("Your aproached by a traveler. " +
-                    "\n They offer you a potion. Do you accept?", "\n 1.yes", "\n 2.no");
+                Console.WriteLine("Please enter your name.");
+                name = Console.ReadLine();
+                Console.WriteLine("Hello " + name);
 
-                input = Console.ReadLine();
-                if (input == "1" || input == "yes")
-                {
-                    Console.WriteLine("It was posion!" + "\n You lose 5 health");
-                    Console.WriteLine(health += poison);
-                    validInputReceived = true;
-                }
-
-                else if (input == "2" || input == "no")
-                {
-                    Console.WriteLine("You decline his offer and move on.");
-                    validInputReceived = true;
-                }
-
-                else
-                {
-                    Console.WriteLine("Invalid Choice");
-                    Console.ReadKey();
-                }
                 Console.ReadKey();
                 Console.Clear();
-            }
+
+                //Calling Class Selection
+                int Input = GetInput("Select a Class", "Knight", "Wizard");
+
+                //If class pick is knight            
+                if (Input == 1)
+                {
+                    characterClass = "Knight";
+                    health = 100;
+                    power = 10;
+                    validInputReceived = true;
+                }
+
+                //If class pick is Wizard
+                else if (Input == 2)
+                {
+                    characterClass = "Wizard";
+                    health = 75;
+                    power = 15;
+                    validInputReceived = true;
+                }
+                DisplayStats();
+
+                //Man offers you a potion
+                validInputReceived = false;
+                while (validInputReceived == false)
+                {
+                    Console.WriteLine("Your aproached by a traveler. " +
+                        "\n They offer you a potion. Do you accept?" + "\n 1.yes" + "\n 2.no");
+
+                    input = Console.ReadLine();
+                    if (input == "1" || input == "yes")
+                    {
+                        Console.WriteLine("It was posion!" + "\n You lose 5 health");
+                        Console.WriteLine(health -= poison);
+                        Console.WriteLine($"Your Hp: {health}");
+                        validInputReceived = true;
+                    }
+
+                    else if (input == "2" || input == "no")
+                    {
+                        Console.WriteLine("You decline his offer and move on.");
+                        validInputReceived = true;
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("Invalid Choice");
+                        Console.ReadKey();
+                    }
+                    Console.ReadKey();
+                    Console.Clear();
+                }
 
 
 
                 //Number of attempts a Loop
                 int numberOfAttempts = 4;
 
-                Console.WriteLine("A very old man with a monkey on his back approches you." + "\n The monkey offers you imortality if you can solve a riddle in " + numberOfAttempts + "Trys");
+                Console.WriteLine("A very old man with a monkey on his back approches you." + "\n The monkey offers you imortality if you can solve a riddle in " + numberOfAttempts + " Trys");
                 Console.ReadKey();
 
                 for (int i = 0; i < numberOfAttempts; i++)
@@ -168,7 +175,7 @@ namespace HelloDungeon
                 }
                 Console.WriteLine($"Your Hp: {health}");
 
-                //First Choice
+                //Entering the Cave
                 validInputReceived = false;
                 while (validInputReceived == false)
                 {
@@ -192,48 +199,97 @@ namespace HelloDungeon
                     else
                     {
                         Console.WriteLine("Invalid Choice");
+                        Console.ReadKey();
                     }
                     Console.ReadKey();
                     Console.Clear();
                 }
 
-            //Second Encounter
-            {
-                validInputReceived = false;
-                while (validInputReceived == false)
-                Console.WriteLine("While in the cave you hear the sound of rocks grinding . You look where you just entered from to see the faint light disapear.");
-                Console.WriteLine("Your stuck in the cave with only one way to go, so you go deeper into the cave. ");
-                Console.WriteLine("As you go deeper you see a faint light that quickly disapears." + "\n Befor you stands a 12 foot Goblin Daddy ;)");
-                Console.ReadKey();
-                
-                //Choice to attack or talk
-                Input = GetInput("What Will you do?", "Try Talking to him", "Attack him");
-                if (Input == 1)
+                //Second Encounter
                 {
-                    Console.WriteLine("You Say whats up." + "Amazingly he understands english" + "\n He ask what your doing in his cave.");
+                    Console.WriteLine("While in the cave you hear the sound of rocks grinding ." + "\n You look where you just entered from to see the faint light disapear.");
+                    Console.WriteLine("Your stuck in the cave with only one way to go, so you go deeper into the cave. ");
+                    Console.WriteLine();
+                    Console.WriteLine("As you go deeper you see a faint light that quickly disapears." + "\n Befor you stands a 12 foot Goblin Daddy ;)");
                     Console.ReadKey();
-                    Console.WriteLine("You say you just wandereed in an would like to leave." + "He understands and moves reveling the exit");
-                    Console.ReadKey();
-                    Console.WriteLine("You Escaped Congrates" + "Would you like to play Again" + "\n yes" + "\n no");
-                    if (input == "yes")
+
+                    validInputReceived = false;
+                    while (validInputReceived == false)
                     {
-                        
+                        //Choice to Talk to the Goblin
+                        Input = GetInput("What Will you do?", "Try Talking to him", "Attack him");
+                        if (Input == 1)
+                        {
+                            Console.WriteLine("You Say whats up." + "Amazingly he understands english " + "\n He ask what your doing in his cave.");
+                            Console.ReadKey();
+                            Console.WriteLine("You say you just wandereed in an would like to leave. " + "He understands and moves reveling the exit");
+                            Console.ReadKey();
+                            Console.WriteLine("You Escaped Congrates " + "Would you like to play Again? " + "\n 1.yes" + "\n 2.no");
+                            input = Console.ReadLine();
+                            if (input == "yes" || input == "1")
+                            {
+                                //Restart Game
+                                gameOver = true;
+                                validInputReceived = true;
+
+                            }
+                            else if (input == "no" || input == "2")
+                            {
+                                //EndGame
+                                gameOver = false;
+                                validInputReceived = true;
+                            }
+                            else
+                            {
+                                //Players input is invalid
+                                Console.WriteLine("Invalid Choice");
+                                Console.ReadKey();
+                            }
+                        }
+
+                        //You try attacking
+                        else if (Input == 2)
+                        {
+                            Console.WriteLine("You attack him for" + (power -= monsterHealth1) + "\n You hit the Goblin he then swings and hits you" + (health -= monsterAttack));
+                            Console.WriteLine($"Your Hp: {health}");
+                            Console.WriteLine("You died " + "Would you like to play Again" + "\n 1.yes" + "\n 2.no");
+                            Console.ReadKey();
+                            input = Console.ReadLine();
+                            if (input == "yes" || input == "1")
+                            {
+                                //Restart games
+                                gameOver = true;
+                                validInputReceived = true;
+                            }
+                            else if (input == "no" || input == "2")
+                            {
+                                //EndGAme
+                                gameOver = false;
+                                validInputReceived = true;
+                            }
+                            else
+                            {
+                                //Players Input is invalid
+                                Console.WriteLine("Invalid Choice");
+                                Console.ReadKey();
+                            }
+                        }
+                        //If answer is invalid
+                        else
+                        {
+                            Console.WriteLine("Invalid Choice");
+                            Console.ReadKey();
+                        }
                     }
 
+
+
+
+
+
+
+
                 }
-                
-
-
-
-
-
-
-
-
-
-
-
-
             }
         }
     }
